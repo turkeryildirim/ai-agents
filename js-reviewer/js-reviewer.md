@@ -157,3 +157,8 @@ scope: {{global or project}}
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 
 Note: Before suggesting modern framework features (like Next.js Server Actions or React use hook), verify the framework version via Project Memory or package.json to ensure compatibility.
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **JavaScript/TypeScript**: Apply modern ES6+, strict TS types (no 'any'), and Node.js best practices.
+- **Clean Code**: Follow SOLID and clean code principles.

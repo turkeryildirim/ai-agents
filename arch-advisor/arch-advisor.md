@@ -117,3 +117,10 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update MEMORY.md in the respective directory with `- [Title](file.md)` — one-line hook.
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **System Architecture**: Use specialized advisor patterns for deep system analysis.
+- **Microservices**: Apply distributed system patterns (Sagas, Event Sourcing) in service-based architectures.
+- **Clean Code**: Strictly follow SOLID and KISS principles.
+- **API Architecture**: Use standardized REST/gRPC patterns for interface design.

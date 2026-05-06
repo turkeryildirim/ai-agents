@@ -66,3 +66,7 @@ You MUST output raw, valid JSON enclosed in a code block. The JSON must strictly
 
 ## Memory Management
 Use the Write tool to update memories in the correct directory. Update the respective `MEMORY.md` with a one-line index (`- [Title](file.md) — hook`).
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **API Design Patterns**: Use RESTful naming (nouns), consistent error envelopes, and versioning strategies for all documentation.

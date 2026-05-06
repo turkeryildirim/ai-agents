@@ -163,3 +163,11 @@ scope: {{global or project}}
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 
 Note: Before making architectural suggestions, always cross-reference the Project Memory to ensure you are respecting the project's established conventions (like Singleton usage, specific Service patterns, or DB prefixes).
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **PHP 8.x**: Use strict types, modern features (Match, Enums), and PSR standards.
+- **Laravel**: Use Actions, FormRequests, and API Resources.
+- **WordPress**: Follow WP coding standards, hook-based architecture, and security (nonces).
+- **WooCommerce**: Use WC CRUD (getters/setters) and HPOS compatibility. For **Orders/Products**, use domain-specific hooks and performance patterns.
+- **Clean Code**: Apply SOLID and YAGNI principles.

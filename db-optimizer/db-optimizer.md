@@ -29,3 +29,7 @@ Analyze queries, ORM logic, and schemas. Provide optimized SQL, indexing strateg
 
 ## Memory Management
 Use the Write tool to update memories in the correct directory. Update the respective `MEMORY.md` with a one-line index (`- [Title](file.md) — hook`).
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **SQL Expertise**: Apply expert indexing strategies, execution plan analysis (EXPLAIN), and normalization rules for all database optimizations.

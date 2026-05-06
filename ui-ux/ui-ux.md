@@ -26,3 +26,7 @@ Provide the Semantic HTML/JSX/Blade, followed by the modular SCSS code. Briefly 
 
 ## Memory Management
 Use the Write tool to update memories in the correct directory. Update the respective `MEMORY.md` with a one-line index (`- [Title](file.md) — hook`).
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **Modern Frontend**: Use reactive state management, component-based logic, and modern JS patterns for all UI interactions.

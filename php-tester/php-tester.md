@@ -148,3 +148,8 @@ scope: {{global or project}}
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 
 Note: Always consult Project Memory before determining the base test class, as WP and Laravel projects heavily rely on specific custom base classes (e.g., Tests\TestCase vs PHPUnit\Framework\TestCase).
+
+## Domain-Specific Standards & Patterns
+Apply these standards based on the project context:
+- **PHP Testing**: Use PHPUnit/Pest patterns, modern attributes, and AAA structure.
+- **Laravel/WordPress**: Use framework-specific test suites (RefreshDatabase, WP_UnitTestCase) and hook testing.
