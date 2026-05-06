@@ -18,8 +18,9 @@ Each agent acts as a Senior Engineer specialized in its respective field and lea
 | **php-tester** | PHP Test Writing | Writes modern tests with PHP 8 attributes using PHPUnit and Pest, including Mockery/WP_Mock support. |
 | **ui-ux** | Frontend & UI/UX | Specializes in custom SCSS architectures (BEM), accessibility (WCAG), and converting Tailwind to clean SCSS. |
 | **gemini** | CLI Wrapper | Specialized bridge for Gemini CLI, handling complex codebase analysis and expert persona integration. |
-| **codex** | CLI Wrapper | Specialized bridge for Gemini CLI, managing large-scale analysis and pattern detection. |
-| **opencode** | CLI Wrapper | Specialized bridge for Gemini CLI, supporting multi-model sessions and complex queries. |
+| **claude** | CLI Wrapper | Specialized bridge for Claude CLI, handling complex codebase analysis and expert persona integration. |
+| **codex** | CLI Wrapper | Specialized bridge for Codex CLI, managing large-scale analysis and pattern detection. |
+| **opencode** | CLI Wrapper | Specialized bridge for OpenCode CLI, supporting multi-model sessions and complex queries. |
 
 ## 🧠 Core Principles
 
