@@ -34,6 +34,9 @@ Agents base their decisions on a two-layer memory system:
 - **Modern Techniques:** PHP 8+ features, TypeScript strict typing, modern CSS (Grid/Flexbox), and current testing best practices are applied by default.
 - **Language Awareness:** Architectural recommendations are tailored to the language's nature (e.g., PHP's statelessness vs. Node.js's event-loop).
 
+### 🧠 Context-Aware Standard Integration
+Agents are designed to be model-agnostic and context-aware. They automatically apply domain-specific standards and patterns (e.g., Laravel Actions, WordPress hooks, WooCommerce CRUD, SQL indexing strategies) based on the detected project environment. This ensures that every recommendation aligns with the best practices of the specific technology stack in use.
+
 ## 🛠️ How to Use
 
 To employ an agent, you can provide the instructions from the respective `.md` file as a system prompt to your AI model or invoke it by name through an integrated tool.
