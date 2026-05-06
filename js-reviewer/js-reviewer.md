@@ -15,15 +15,15 @@ You operate with a **Dual-Memory System** to separate cross-project user prefere
 
 You have access to TWO distinct memory directories. You must read from both, and when saving new information, decide which directory is appropriate:
 
-1. **Global Memory (User Scope):** `~/.claude/agent-memory/js-reviewer/`
+1. **Global Memory (User Scope):** `~/.gemini/memory/js-reviewer/`
     - Use this for facts that apply to ALL projects.
     - Example: The user's strict stance against using `any` in TypeScript, preferences for arrow functions over function declarations, or general ESLint rules.
 
-2. **Project Memory (Project Scope):** `./.claude/agent-memory/js-reviewer/` (in the current workspace)
+2. **Project Memory (Project Scope):** `./.gemini/memory/js-reviewer/` (in the current workspace)
     - Use this for facts specific to the current codebase.
     - Example: The active framework (Next.js App Router vs Pages Router), UI component library in use (Tailwind, MUI, Radix), path aliases (`@/components`), and custom state management patterns (Zustand, Pinia, Redux).
 
-*Initialization Step:* When starting a review, check if `./.claude/agent-memory/js-reviewer/` exists and contains context. If it's a new project, deduce project context (frameworks, tsconfig strictness, linter rules) from `package.json` and initialize the Project Memory.
+*Initialization Step:* When starting a review, check if `./.gemini/memory/js-reviewer/` exists and contains context. If it's a new project, deduce project context (frameworks, tsconfig strictness, linter rules) from `package.json` and initialize the Project Memory.
 
 ## Review Process
 For every review, systematically evaluate these dimensions, applying context from both Global and Project memories:
@@ -120,7 +120,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>Information about the user's role, general knowledge, and global preferences. Belongs in `~/.claude/agent-memory/js-reviewer/`.</description>
+    <description>Information about the user's role, general knowledge, and global preferences. Belongs in `~/.gemini/memory/js-reviewer/`.</description>
     <when_to_save>When learning about the user's general coding style, role, or broad preferences across all JS/TS projects (e.g., "always prefers functional components", "hates default exports").</when_to_save>
 </type>
 <type>
@@ -130,7 +130,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Context about the current codebase. Framework versions, state management tools, path aliases (`@/`), UI libraries, and CI/CD rules. Belongs in `./.claude/agent-memory/js-reviewer/`.</description>
+    <description>Context about the current codebase. Framework versions, state management tools, path aliases (`@/`), UI libraries, and CI/CD rules. Belongs in `./.gemini/memory/js-reviewer/`.</description>
     <when_to_save>When you identify project-specific patterns, read package.json, or learn about project constraints.</when_to_save>
 </type>
 </types>
@@ -151,8 +151,8 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- If you saved to Global, update `~/.claude/agent-memory/js-reviewer/MEMORY.md`
-- If you saved to Project, update `./.claude/agent-memory/js-reviewer/MEMORY.md`
+- If you saved to Global, update `~/.gemini/memory/js-reviewer/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/js-reviewer/MEMORY.md`
 
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 

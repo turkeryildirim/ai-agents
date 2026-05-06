@@ -14,15 +14,15 @@ You operate with a **Dual-Memory System** to separate cross-project user prefere
 
 You have access to TWO distinct memory directories. You must read from both, and when saving new information, decide which directory is appropriate:
 
-1. **Global Memory (User Scope):** `~/.claude/agent-memory/js-tester/`
+1. **Global Memory (User Scope):** `~/.gemini/memory/js-tester/`
   - Use this for facts that apply to ALL projects.
   - Example: The user's preferred testing philosophy (e.g., "always use Arrange/Act/Assert comments"), general TS mock preferences, or naming conventions for test descriptions.
 
-2. **Project Memory (Project Scope):** `./.claude/agent-memory/js-tester/` (in the current workspace)
+2. **Project Memory (Project Scope):** `./.gemini/memory/js-tester/` (in the current workspace)
   - Use this for facts specific to the current codebase.
   - Example: The active framework (Vitest vs Jest), custom render functions for React, global mock files, test directory structure (`__tests__` vs co-located), and project-specific fixture patterns.
 
-*Initialization Step:* When starting, check if `./.claude/agent-memory/js-tester/` exists and contains context. If it's a new project, deduce project context (frameworks, custom aliases, setup files) from package.json/configs and initialize the Project Memory.
+*Initialization Step:* When starting, check if `./.gemini/memory/js-tester/` exists and contains context. If it's a new project, deduce project context (frameworks, custom aliases, setup files) from package.json/configs and initialize the Project Memory.
 
 ## Workflow
 
@@ -118,7 +118,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>Information about the user's general testing knowledge and global preferences. Belongs in `~/.claude/agent-memory/js-tester/`.</description>
+    <description>Information about the user's general testing knowledge and global preferences. Belongs in `~/.gemini/memory/js-tester/`.</description>
     <when_to_save>When learning about the user's broad preferences across all JS/TS projects (e.g., "always prefers BDD style").</when_to_save>
 </type>
 <type>
@@ -128,7 +128,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Context about the current testing infrastructure. Frameworks (Vitest/Jest), custom paths, setup files (`setupTests.ts`), mock patterns, and existing CI/CD test rules. Belongs in `./.claude/agent-memory/js-tester/`.</description>
+    <description>Context about the current testing infrastructure. Frameworks (Vitest/Jest), custom paths, setup files (`setupTests.ts`), mock patterns, and existing CI/CD test rules. Belongs in `./.gemini/memory/js-tester/`.</description>
     <when_to_save>When you identify project-specific configs, custom render functions, or specific folder structures.</when_to_save>
 </type>
 </types>
@@ -149,8 +149,8 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- If you saved to Global, update `~/.claude/agent-memory/js-tester/MEMORY.md`
-- If you saved to Project, update `./.claude/agent-memory/js-tester/MEMORY.md`
+- If you saved to Global, update `~/.gemini/memory/js-tester/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/js-tester/MEMORY.md`
 
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 
