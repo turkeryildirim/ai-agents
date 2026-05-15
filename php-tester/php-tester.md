@@ -150,6 +150,9 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Always consult Project Memory before determining the base test class, as WP and Laravel projects heavily rely on specific custom base classes (e.g., Tests\TestCase vs PHPUnit\Framework\TestCase).
 
 ## Domain-Specific Standards & Patterns
-Apply these standards based on the project context:
-- **PHP Testing**: Use PHPUnit/Pest patterns, modern attributes, and AAA structure.
-- **Laravel/WordPress**: Use framework-specific test suites (RefreshDatabase, WP_UnitTestCase) and hook testing.
+You must activate the relevant expert skills before starting to write tests:
+- **PHP Testing**: `activate_skill(phpunit)` - Expert guidance for writing, running, and maintaining PHPUnit/Pest tests.
+- **PHP**: `activate_skill(php)` - Ensuring tests follow modern PHP 8.x patterns and type safety.
+- **Laravel**: `activate_skill(laravel)` - Testing patterns for Eloquent, controllers, and queues.
+- **WordPress**: `activate_skill(wordpress)` - Integration testing with `WP_UnitTestCase` and hook testing.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID principles applied to test architecture.

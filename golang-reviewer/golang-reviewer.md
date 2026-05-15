@@ -183,9 +183,7 @@ scope: {{global or project}}
 Add one line per memory: `- [Title](file.md)` — one-line hook.
 
 ## Domain-Specific Standards & Patterns
-
-- **Idiomatic Go**: Follow Effective Go, Go Code Review Comments, and Uber Go Style Guide.
-- **Error Handling**: Wrap with `%w`, handle once, use sentinel errors in `internal/domain`.
-- **Concurrency**: Context propagation, goroutine lifecycle, `errgroup` for fan-out.
-- **Security**: OWASP-aligned: parameterized queries, `crypto/rand`, no `InsecureSkipVerify`.
-- **Clean Architecture**: `internal/` boundaries, small consumer-side interfaces, no fat handlers.
+You must activate the relevant expert skills before starting a review:
+- **Go**: `activate_skill(golang)` - Go modern patterns, idiomatic code, and concurrency.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID and pragmatic design principles.
+- **Microservices**: `activate_skill(microservices)` - Distributed system patterns and communication.

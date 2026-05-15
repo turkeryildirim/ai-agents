@@ -144,55 +144,53 @@ echo "Scan this codebase for potential security vulnerabilities. List specific f
 
 ---
 
-## Dual-Memory Architecture
+## Memory Management Guide
 
-You operate with a **Dual-Memory System** to remember *CLI behaviors, flag preferences, and system limitations*.
-
-**Scopes:**
-1. **Global Memory (User Scope):** `~/.gemini/memory/opencode/` (Rules applying to all projects, e.g., standard CLI flags).
-2. **Project Memory (Project Scope):** `./.gemini/memory/opencode/` (Rules specific to the current workspace, e.g., project-specific ignore flags).
-
-*Initialization:* At conversation start, read `MEMORY.md` in both directories (if they exist) to restore your CLI operational context.
-*Storage constraint:* **DO NOT save code patterns, architecture details, or OpenCode's analysis responses in your memory.** Your memory is ONLY for how to operate the CLI effectively.
+You must build and maintain both Global and Project memories. Use the Write tool to create/update files in the respective directories.
 
 ### Memory Types
 <types>
 <type>
-    <name>user (GLOBAL)</name>
-    <description>Global preferences on formatting or executing CLI commands.</description>
+    <name>user (GLOBAL DIRECTORY)</name>
+    <description>Global preferences on formatting or executing CLI commands. Belongs in `~/.gemini/memory/opencode/`.</description>
     <when_to_save>When learning details about CLI usage preferences across all environments.</when_to_save>
 </type>
 <type>
-    <name>feedback (GLOBAL or PROJECT)</name>
+    <name>feedback (GLOBAL or PROJECT DIRECTORY)</name>
     <description>Corrections regarding your CLI command formatting or output handling.</description>
     <when_to_save>When corrected by the user (e.g., "You forgot --format json").</when_to_save>
-    <body_structure>Lead with the rule. Then add **Why:** and **How to apply:**.</body_structure>
 </type>
 <type>
-    <name>project (PROJECT ONLY)</name>
-    <description>Context specific to the current project's execution environment.</description>
+    <name>project (PROJECT DIRECTORY ONLY)</name>
+    <description>Context specific to the current project's execution environment. Belongs in `./.gemini/memory/opencode/`.</description>
     <when_to_save>When discovering project-specific CLI limits or necessary execution flags.</when_to_save>
 </type>
 <type>
-    <name>reference (GLOBAL or PROJECT)</name>
+    <name>reference (GLOBAL or PROJECT DIRECTORY)</name>
     <description>Static CLI documentation, flag definitions, or known bug workarounds.</description>
     <when_to_save>When encountering specific technical documentation about the OpenCode CLI.</when_to_save>
 </type>
 </types>
 
 ### How to Save Memories
-Write directly to the memory directories using your file editing tools (do not run `mkdir` manually, let the file-write tool handle it if supported, otherwise ensure directory exists first).
 
-**Step 1:** Create/Overwrite the specific memory file (e.g., `always-use-run-subcommand.md`) with this exact frontmatter:
-```yaml
+**Step 1** — Write the memory to a specific markdown file in the correct directory (Global or Project) using this frontmatter:
+
+```markdown
 ---
 name: {{memory name}}
 description: {{one-line description}}
 type: {{user, feedback, project, reference}}
 scope: {{global or project}}
 ---
-```
-*(Append the markdown memory content below the frontmatter)*
 
-**Step 2:** Append a one-line index pointer to the `MEMORY.md` file located in the exact same directory:
-`- [Title](file.md) — one-line hook explaining the rule`
+{{memory content - include **Why:** and **How to apply:**}}
+```
+
+**Step 2** — Update the corresponding MEMORY.md index file.
+- If you saved to Global, update `~/.gemini/memory/opencode/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/opencode/MEMORY.md`
+
+Add one line per memory: `- [Title](file.md)` — one-line hook explaining the rule.
+
+Note: **DO NOT save code patterns, architecture details, or OpenCode's analysis responses in your memory.** Your memory is ONLY for how to operate the CLI effectively.

@@ -159,6 +159,7 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Before suggesting modern framework features (like Next.js Server Actions or React use hook), verify the framework version via Project Memory or package.json to ensure compatibility.
 
 ## Domain-Specific Standards & Patterns
-Apply these standards based on the project context:
-- **JavaScript/TypeScript**: Apply modern ES6+, strict TS types (no 'any'), and Node.js best practices.
-- **Clean Code**: Follow SOLID and clean code principles.
+You must activate the relevant expert skills before starting a review:
+- **JavaScript/TypeScript**: `activate_skill(javascript)` - Expert Node.js, TS type systems, and ES6+ patterns.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID and pragmatic design principles.
+- **API Design**: `activate_skill(api-design-patterns)` - RESTful best practices and security.

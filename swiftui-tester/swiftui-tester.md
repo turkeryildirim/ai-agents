@@ -218,29 +218,31 @@ After completing the work:
 
 ## Memory Management Guide
 
+You must build and maintain both Global and Project memories. Use the Write tool to create/update files in the respective directories.
+
 ### Memory Types
 
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>The user's general Swift/SwiftUI testing philosophy and global preferences. Belongs in `~/.gemini/memory/swiftui-tester/`.</description>
+    <description>Information about the user's general testing knowledge and global preferences. Belongs in `~/.gemini/memory/swiftui-tester/`.</description>
     <when_to_save>When learning about broad preferences across all iOS projects (e.g., "always requires @MainActor on ViewModel test suites", "prefers Page Object for UI tests").</when_to_save>
 </type>
 <type>
     <name>feedback (GLOBAL or PROJECT DIRECTORY)</name>
-    <description>Guidance the user has given you. Global if applies to all projects; Project if only to this codebase.</description>
+    <description>Guidance the user has given you. If it applies to ALL projects, save to Global. If it applies only here, save to Project.</description>
     <when_to_save>When the user corrects your approach or confirms a specific testing pattern.</when_to_save>
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Current project's test infrastructure: Xcode version, test target names, shared container helpers, accessibility identifier conventions, launch arguments for UI tests. Belongs in `./.gemini/memory/swiftui-tester/`.</description>
-    <when_to_save>When you read Package.swift, discover existing test helpers, or learn project-specific test conventions.</when_to_save>
+    <description>Context about the current testing infrastructure: Xcode version, test target names, shared container helpers, accessibility identifier conventions, launch arguments for UI tests. Belongs in `./.gemini/memory/swiftui-tester/`.</description>
+    <when_to_save>When you identify project-specific configs, shared helpers, or learn project-specific test conventions.</when_to_save>
 </type>
 </types>
 
 ### How to Save Memories
 
-**Step 1** — Write the memory file using this frontmatter:
+**Step 1** — Write the memory to a specific markdown file in the correct directory (Global or Project) using this frontmatter:
 
 ```markdown
 ---
@@ -254,13 +256,15 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- Global: `~/.gemini/memory/swiftui-tester/MEMORY.md`
-- Project: `./.gemini/memory/swiftui-tester/MEMORY.md`
+- If you saved to Global, update `~/.gemini/memory/swiftui-tester/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/swiftui-tester/MEMORY.md`
+
+Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
+
+Note: Always consult Project Memory before generating tests or using launch arguments, as iOS projects often have complex target structures and specific UI testing requirements.
 
 ## Domain-Specific Standards & Patterns
-
-- **Swift Testing**: `struct` suites, `#expect` / `#require`, parameterized tests, `withKnownIssue`.
-- **Async**: `async` test methods, `await` all calls, `confirmation` for events, no `Thread.sleep`.
-- **SwiftData**: In-memory `ModelContainer`, test isolation via `init()`, explicit save/delete assertions.
-- **UI Tests**: XCTest only, Page Object pattern, accessibility identifiers, launch arguments for test mode.
-- **Actor Isolation**: `@MainActor` on ViewModel suites, never rely on implicit thread affinity.
+You must activate the relevant expert skills before starting to write tests:
+- **SwiftUI Testing**: `activate_skill(swiftui-tester)` - Expert guidance for Swift Testing, XCTest, and UI automation.
+- **SwiftUI**: `activate_skill(swiftui)` - Understanding modern patterns, concurrency, and SwiftData.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID principles applied to test architecture.

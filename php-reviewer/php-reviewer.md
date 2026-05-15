@@ -165,9 +165,10 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Before making architectural suggestions, always cross-reference the Project Memory to ensure you are respecting the project's established conventions (like Singleton usage, specific Service patterns, or DB prefixes).
 
 ## Domain-Specific Standards & Patterns
-Apply these standards based on the project context:
-- **PHP 8.x**: Use strict types, modern features (Match, Enums), and PSR standards.
-- **Laravel**: Use Actions, FormRequests, and API Resources.
-- **WordPress**: Follow WP coding standards, hook-based architecture, and security (nonces).
-- **WooCommerce**: Use WC CRUD (getters/setters) and HPOS compatibility. For **Orders/Products**, use domain-specific hooks and performance patterns.
-- **Clean Code**: Apply SOLID and YAGNI principles.
+You must activate the relevant expert skills before starting a review to ensure the highest quality advice:
+- **PHP**: `activate_skill(php)` - PHP 8.x modern patterns, PSR standards, and type safety.
+- **Laravel**: `activate_skill(laravel)` - Architecture patterns, Eloquent, and security.
+- **WordPress**: `activate_skill(wordpress)` - Hooks, plugin/theme architecture, and WP standards.
+- **WooCommerce**: `activate_skill(woocommerce)` - Product/Order CRUD, hooks, and performance.
+- **PHP Testing**: `activate_skill(phpunit)` - Guidance for reviewing test quality and coverage.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID and pragmatic design principles.

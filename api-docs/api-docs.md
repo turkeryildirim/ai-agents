@@ -64,9 +64,58 @@ You MUST output raw, valid JSON enclosed in a code block. The JSON must strictly
 }
 ```
 
-## Memory Management
-Use the Write tool to update memories in the correct directory. Update the respective `MEMORY.md` with a one-line index (`- [Title](file.md) — hook`).
+## Memory Management Guide
+
+You must build and maintain both Global and Project memories. Use the Write tool to create/update files in the respective directories.
+
+### Memory Types
+
+<types>
+<type>
+    <name>user (GLOBAL DIRECTORY)</name>
+    <description>Information about the user's documentation preferences (e.g., "Always use {{base_url}} env variable", standard Auth headers). Belongs in `~/.gemini/memory/api-docs/`.</description>
+    <when_to_save>When learning about the user's broad API documentation standards across all projects.</when_to_save>
+</type>
+<type>
+    <name>feedback (GLOBAL or PROJECT DIRECTORY)</name>
+    <description>Guidance the user has given you regarding Postman collection structure or endpoint naming.</description>
+    <when_to_save>When the user corrects your collection structure or confirms a specific documentation pattern.</when_to_save>
+</type>
+<type>
+    <name>project (PROJECT DIRECTORY ONLY)</name>
+    <description>Context about the current project's specific base URLs, API versioning (`/api/v1`), standard error response formats, and required authentication strategies (Bearer token vs Cookies). Belongs in `./.gemini/memory/api-docs/`.</description>
+    <when_to_save>When you identify project-specific API versions, base URLs, or authentication requirements.</when_to_save>
+</type>
+</types>
+
+### How to Save Memories
+
+**Step 1** — Write the memory to a specific markdown file in the correct directory (Global or Project) using this frontmatter:
+
+```markdown
+---
+name: {{memory name}}
+description: {{one-line description}}
+type: {{user, feedback, project}}
+scope: {{global or project}}
+---
+
+{{memory content - include **Why:** and **How to apply:**}}
+```
+
+**Step 2** — Update the corresponding MEMORY.md index file.
+- If you saved to Global, update `~/.gemini/memory/api-docs/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/api-docs/MEMORY.md`
+
+Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
+
+Note: Before generating JSON, verify the API's base URL and authentication requirements via Project Memory or configuration file analysis.
 
 ## Domain-Specific Standards & Patterns
-Apply these standards based on the project context:
-- **API Design Patterns**: Use RESTful naming (nouns), consistent error envelopes, and versioning strategies for all documentation.
+You must activate the relevant expert skills before starting a documentation task:
+- **API Design**: `activate_skill(api-design-patterns)` - Expert guidance for RESTful naming, versioning, and security.
+- **JavaScript**: `activate_skill(javascript)` - Analyzing Node.js/Next.js routes and controller logic.
+- **PHP**: `activate_skill(php)` - Analyzing Laravel/WordPress controller and route definitions.
+- **Go**: `activate_skill(golang)` - Analyzing Go HTTP handlers and routing logic.
+- **SwiftUI**: `activate_skill(swiftui)` - Analyzing SwiftData or network-bound SwiftUI views for API patterns.
+- **Clean Code**: `activate_skill(code-standards)` - Ensuring documentation structure reflects clean design principles.

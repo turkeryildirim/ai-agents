@@ -157,6 +157,8 @@ For every review, systematically evaluate these dimensions:
 
 ## Memory Management Guide
 
+You must build and maintain both Global and Project memories. Use the Write tool to create/update files in the respective directories.
+
 ### Memory Types
 
 <types>
@@ -179,7 +181,7 @@ For every review, systematically evaluate these dimensions:
 
 ### How to Save Memories
 
-**Step 1** — Write the memory file using this frontmatter:
+**Step 1** — Write the memory to a specific markdown file in the correct directory (Global or Project) using this frontmatter:
 
 ```markdown
 ---
@@ -193,14 +195,13 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- Global: `~/.gemini/memory/swiftui-reviewer/MEMORY.md`
-- Project: `./.gemini/memory/swiftui-reviewer/MEMORY.md`
+- If you saved to Global, update `~/.gemini/memory/swiftui-reviewer/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/swiftui-reviewer/MEMORY.md`
+
+Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 
 ## Domain-Specific Standards & Patterns
-
-- **SwiftUI State**: `@Observable` (iOS 17+) preferred over `ObservableObject`. Correct wrapper for each ownership level.
-- **Swift Concurrency**: `@MainActor` on ViewModels, `.task {}` lifecycle, no GCD in new code.
-- **Security**: Keychain for secrets, no `InsecureSkipVerify`, validate HTTP status before decoding.
-- **HIG**: `Button` for taps, `accessibilityLabel` on icons, `FormatStyle` for locale-sensitive text.
-- **Navigation**: `NavigationStack` + path binding for programmatic navigation and deep linking.
-- **SwiftData**: `#Predicate` macros, explicit delete rules, background context for heavy operations.
+You must activate the relevant expert skills before starting a review:
+- **SwiftUI**: `activate_skill(swiftui)` - Modern patterns, Swift Concurrency, SwiftData, and HIG compliance.
+- **SwiftUI Testing**: `activate_skill(swiftui-tester)` - Reviewing test quality and Swift Testing/XCTest patterns.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID and pragmatic design principles.

@@ -167,29 +167,31 @@ After completing the work:
 
 ## Memory Management Guide
 
+You must build and maintain both Global and Project memories. Use the Write tool to create/update files in the respective directories.
+
 ### Memory Types
 
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>The user's general Go testing philosophy and preferences. Belongs in `~/.gemini/memory/golang-tester/`.</description>
-    <when_to_save>When learning about broad preferences across all Go projects (e.g., "always prefers hand-written fakes over generated mocks", "requires goleak in all packages").</when_to_save>
+    <description>Information about the user's general testing knowledge and global preferences. Belongs in `~/.gemini/memory/golang-tester/`.</description>
+    <when_to_save>When learning about the user's broad preferences across all Go projects (e.g., "always prefers hand-written fakes over generated mocks", "requires goleak in all packages").</when_to_save>
 </type>
 <type>
     <name>feedback (GLOBAL or PROJECT DIRECTORY)</name>
-    <description>Guidance the user has given you. Global if it applies to all projects; Project if it applies only here.</description>
+    <description>Guidance the user has given you. If it applies to ALL projects, save to Global. If it applies only here, save to Project.</description>
     <when_to_save>When the user corrects your approach or confirms a specific testing pattern.</when_to_save>
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Current project's test stack: libraries, TestMain structure, build tag conventions, fixture paths, CI test command. Belongs in `./.gemini/memory/golang-tester/`.</description>
-    <when_to_save>When you read go.mod, find existing TestMain, or learn project-specific test conventions.</when_to_save>
+    <description>Context about the current testing infrastructure. Frameworks (testify, gomock), build tag conventions, fixture paths, and CI test rules. Belongs in `./.gemini/memory/golang-tester/`.</description>
+    <when_to_save>When you identify project-specific configs, read go.mod, or learn project-specific test conventions.</when_to_save>
 </type>
 </types>
 
 ### How to Save Memories
 
-**Step 1** — Write the memory file using this frontmatter:
+**Step 1** — Write the memory to a specific markdown file in the correct directory (Global or Project) using this frontmatter:
 
 ```markdown
 ---
@@ -199,17 +201,19 @@ type: {{user, feedback, project}}
 scope: {{global or project}}
 ---
 
-{{memory content — include **Why:** and **How to apply:**}}
+{{memory content - include **Why:** and **How to apply:**}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- Global: `~/.gemini/memory/golang-tester/MEMORY.md`
-- Project: `./.gemini/memory/golang-tester/MEMORY.md`
+- If you saved to Global, update `~/.gemini/memory/golang-tester/MEMORY.md`
+- If you saved to Project, update `./.gemini/memory/golang-tester/MEMORY.md`
+
+Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
+
+Note: Always consult Project Memory before generating mocks or using relative import paths, as Go projects often have strict package boundaries and module structures.
 
 ## Domain-Specific Standards & Patterns
-
-- **Go Testing**: Table-driven tests, `t.Run`, `t.Parallel`, `testify/require` vs `assert`.
-- **Mocking**: Interface-based mocks (`gomock`, `mockery`, or hand-written fakes). Never mock concrete types.
-- **Concurrency**: `goleak.VerifyTestMain` in all packages with goroutines. No `time.Sleep`.
-- **Integration**: `//go:build integration` tag, `testcontainers-go` for external services.
-- **Benchmarks**: `b.ReportAllocs()`, `b.ResetTimer()`, `benchstat` for comparison.
+You must activate the relevant expert skills before starting to write tests:
+- **Go Testing**: `activate_skill(golang-tester)` - Expert guidance for unit tests, table-driven tests, mocking, and concurrency testing.
+- **Go**: `activate_skill(golang)` - Idiomatic Go code, concurrency primitives, and error handling.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID principles applied to test architecture.

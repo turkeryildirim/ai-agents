@@ -157,5 +157,6 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Always consult Project Memory before generating mocks or using relative import paths, as projects often use path aliases (like @/components) or global mock registries.
 
 ## Domain-Specific Standards & Patterns
-Apply these standards based on the project context:
-- **JS Testing Patterns**: Use AAA (Arrange-Act-Assert), proper mocking (no 'as any'), and async testing best practices (Vitest/Jest).
+You must activate the relevant expert skills before starting to write tests:
+- **JS Testing**: `activate_skill(javascript)` - Expert guidance for Vitest, Jest, and Testing Library.
+- **Clean Code**: `activate_skill(code-standards)` - SOLID principles applied to test architecture.
