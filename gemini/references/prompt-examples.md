@@ -17,3 +17,11 @@ If you must formulate the prompt from a high-level goal, use these proven templa
 ## 4. Feature Tracing
 *Goal:* Trace feature implementation.
 *Prompt Content:* `Trace the implementation of [feature] throughout the codebase. Show the complete execution path, including all files involved, data flow, and related API endpoints.`
+
+## 5. Database Schema Review
+*Goal:* Review database schema and queries.
+*Prompt Content:* `Review all database schemas, migrations, and query patterns in this project. Identify missing indexes, N+1 query risks, normalization issues, and suggest optimizations.`
+
+## 6. API Endpoint Audit
+*Goal:* Audit all API endpoints.
+*Prompt Content:* `Enumerate all API endpoints in this project. For each endpoint, document the HTTP method, path, authentication requirements, input validation, and error handling. Flag any missing security checks.`
