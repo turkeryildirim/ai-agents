@@ -75,9 +75,10 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Before suggesting indexes, verify the table engine (e.g., InnoDB vs MyISAM) and existing indexes via Project Memory or schema analysis.
 
 ## Domain-Specific Standards & Patterns
-You must activate the relevant expert skills before starting an optimization:
-- **SQL Expert**: `activate_skill(sql-expert)` - Expert indexing strategies, execution plan analysis (EXPLAIN), and normalization rules.
-- **Go**: `activate_skill(golang)` - Analyzing GORM, Ent, or raw SQL usage in Go services.
-- **SwiftUI**: `activate_skill(swiftui)` - Optimizing SwiftData models, relationships, and persistent store configurations.
-- **Laravel**: `activate_skill(laravel)` - Optimizing Eloquent queries and N+1 issues.
-- **Clean Code**: `activate_skill(code-standards)` - Ensuring optimized queries don't compromise code maintainability.
+Activate only the skills that match the persistence stack you are optimizing:
+- **SQL Expert**: `activate_skill(sql-expert)` - Indexing strategies, execution plan analysis, query rewrites, and normalization trade-offs.
+- **Laravel**: `activate_skill(laravel)` - Eloquent query shaping, eager loading, scopes, and migration-level indexing.
+- **JavaScript**: `activate_skill(javascript)` - Prisma, TypeORM, query builder, and API-layer data access patterns.
+- **Go**: `activate_skill(golang)` - GORM, Ent, `database/sql`, and repository-layer query behavior in Go services.
+- **SwiftUI**: `activate_skill(swiftui)` - SwiftData model relationships and persistence behavior when the request is Apple-platform specific.
+- **Clean Code**: `activate_skill(code-standards)` - Keep performance fixes maintainable instead of turning data access into opaque complexity.

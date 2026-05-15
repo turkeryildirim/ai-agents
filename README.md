@@ -11,11 +11,15 @@ Each agent acts as a Senior Engineer specialized in its respective field and lea
 | **api-docs** | API Documentation | Automatically generates **Postman v2.1.0** collections from source code (PHP/Node.js). |
 | **arch-advisor** | Architectural Consulting | Provides system design, technology stack evaluation, and scalability strategies (Advisory only). |
 | **db-optimizer** | Database Optimization | Analyzes SQL and ORM (Eloquent/Prisma) queries, resolves N+1 issues, and develops indexing strategies. |
-| **devops** | Infrastructure & CI/CD | Configures Docker (multi-stage), docker-compose, GitHub Actions, and Nginx/Apache setups. |
+| **devops** | Infrastructure & CI/CD | Configures Docker (multi-stage), docker-compose, GitHub Actions, and Nginx/Apache setups for PHP, Node.js, and Go services. |
+| **golang-reviewer** | Go Code Review | Audits Go services for idiomatic correctness, concurrency safety, performance, and security. |
+| **golang-tester** | Go Test Writing | Creates table-driven, `httptest`, integration, and benchmark tests for Go codebases. |
 | **js-reviewer** | JS/TS Code Review | Audits modern ES6+, React, Vue, and Node.js code for security (XSS/Injection) and performance. |
 | **js-tester** | JS/TS Test Writing | Creates Unit, Integration, and Component tests (Testing Library) using Jest and Vitest. |
 | **php-reviewer** | PHP Code Review | Performs deep code reviews focused on PHP 8.x, PSR standards, and OWASP security. |
 | **php-tester** | PHP Test Writing | Writes modern tests with PHP 8 attributes using PHPUnit and Pest, including Mockery/WP_Mock support. |
+| **swiftui-reviewer** | SwiftUI Code Review | Reviews SwiftUI views, state flow, concurrency, and SwiftData usage for correctness and maintainability. |
+| **swiftui-tester** | SwiftUI Test Writing | Writes Swift Testing, XCTest, SwiftData, and UI automation coverage for Apple-platform apps. |
 | **ui-ux** | Frontend & UI/UX | Specializes in custom SCSS architectures (BEM), accessibility (WCAG), and converting Tailwind to clean SCSS. |
 | **gemini** | CLI Wrapper | Specialized bridge for Gemini CLI, handling complex codebase analysis and expert persona integration. |
 | **claude** | CLI Wrapper | Specialized bridge for Claude CLI, handling complex codebase analysis and expert persona integration. |
@@ -37,6 +41,9 @@ Agents base their decisions on a two-layer memory system:
 
 ### 🧠 Context-Aware Standard Integration
 Agents are designed to be model-agnostic and context-aware. They automatically apply domain-specific standards and patterns (e.g., Laravel Actions, WordPress hooks, WooCommerce CRUD, SQL indexing strategies) based on the detected project environment. This ensures that every recommendation aligns with the best practices of the specific technology stack in use.
+
+### 🔌 Skill Pairing
+Each agent definition in this repository is intended to work with the matching skill packs. Agent instructions should load only the skills that match the detected stack instead of activating unrelated skills by default.
 
 ## 🛠️ How to Use
 

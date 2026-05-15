@@ -72,7 +72,8 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Before generating SCSS or HTML, verify the project's existing design system variables via Project Memory or stylesheet analysis.
 
 ## Domain-Specific Standards & Patterns
-You must activate the relevant expert skills before starting a design task:
-- **JavaScript**: `activate_skill(javascript)` - Modern JS patterns for reactive UI components and state management.
-- **Clean Code**: `activate_skill(code-standards)` - Ensuring UI architecture follows clean code principles.
-- **WooCommerce**: `activate_skill(woocommerce)` - Expert guidance for WooCommerce-specific UI patterns and hooks.
+Activate only the skills that match the current UI stack:
+- **JavaScript**: `activate_skill(javascript)` - Modern component patterns, state flow, and interactive UI behavior.
+- **WordPress**: `activate_skill(wordpress)` - Admin/UI constraints, block/editor surfaces, and WP-specific markup patterns.
+- **WooCommerce**: `activate_skill(woocommerce)` - Product, cart, checkout, and account-area UI patterns when WooCommerce is in play.
+- **Clean Code**: `activate_skill(code-standards)` - Keep UI structure, naming, and styling architecture maintainable.

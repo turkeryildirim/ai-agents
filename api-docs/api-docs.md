@@ -112,10 +112,10 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Before generating JSON, verify the API's base URL and authentication requirements via Project Memory or configuration file analysis.
 
 ## Domain-Specific Standards & Patterns
-You must activate the relevant expert skills before starting a documentation task:
-- **API Design**: `activate_skill(api-design-patterns)` - Expert guidance for RESTful naming, versioning, and security.
-- **JavaScript**: `activate_skill(javascript)` - Analyzing Node.js/Next.js routes and controller logic.
-- **PHP**: `activate_skill(php)` - Analyzing Laravel/WordPress controller and route definitions.
-- **Go**: `activate_skill(golang)` - Analyzing Go HTTP handlers and routing logic.
-- **SwiftUI**: `activate_skill(swiftui)` - Analyzing SwiftData or network-bound SwiftUI views for API patterns.
-- **Clean Code**: `activate_skill(code-standards)` - Ensuring documentation structure reflects clean design principles.
+Activate only the skills that match the current stack before starting a documentation task:
+- **API Design**: `activate_skill(api-design-patterns)` - Expert guidance for RESTful naming, versioning, status codes, and security.
+- **JavaScript**: `activate_skill(javascript)` - Analyze Node.js/Next.js routes, Zod schemas, and controller logic.
+- **PHP**: `activate_skill(php)` - Analyze Laravel or framework-agnostic PHP controllers, requests, and route definitions.
+- **WordPress**: `activate_skill(wordpress)` - Document `wp_ajax_*`, REST routes, and nonce/capability requirements when the project is WordPress-based.
+- **Go**: `activate_skill(golang)` - Analyze Go HTTP handlers, route registration, and request/response structures.
+- **Clean Code**: `activate_skill(code-standards)` - Keep collection grouping and descriptions aligned with the underlying code design.

@@ -150,9 +150,10 @@ Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write fu
 Note: Always consult Project Memory before determining the base test class, as WP and Laravel projects heavily rely on specific custom base classes (e.g., Tests\TestCase vs PHPUnit\Framework\TestCase).
 
 ## Domain-Specific Standards & Patterns
-You must activate the relevant expert skills before starting to write tests:
-- **PHP Testing**: `activate_skill(phpunit)` - Expert guidance for writing, running, and maintaining PHPUnit/Pest tests.
-- **PHP**: `activate_skill(php)` - Ensuring tests follow modern PHP 8.x patterns and type safety.
-- **Laravel**: `activate_skill(laravel)` - Testing patterns for Eloquent, controllers, and queues.
-- **WordPress**: `activate_skill(wordpress)` - Integration testing with `WP_UnitTestCase` and hook testing.
-- **Clean Code**: `activate_skill(code-standards)` - SOLID principles applied to test architecture.
+Activate only the skills that match the codebase under test:
+- **PHP Testing**: `activate_skill(phpunit)` - Guidance for writing, running, and maintaining PHPUnit/Pest tests.
+- **PHP**: `activate_skill(php)` - Ensure tests follow modern PHP 8.x patterns, strict typing, and clear fixtures.
+- **Laravel**: `activate_skill(laravel)` - Feature, Eloquent, queue, HTTP, and fake-based Laravel testing patterns.
+- **WordPress**: `activate_skill(wordpress)` - `WP_UnitTestCase`, hooks, AJAX, and capability/nonce-related test patterns.
+- **WooCommerce**: `activate_skill(woocommerce)` - Product, cart, checkout, order, and WooCommerce hook testing when the project uses WC surfaces.
+- **Clean Code**: `activate_skill(code-standards)` - Keep test suites readable, focused, and maintainable.
