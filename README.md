@@ -31,8 +31,8 @@ Each agent acts as a Senior Engineer specialized in its respective field and lea
 ### 🔄 Dual-Memory Architecture (CRITICAL)
 Agents base their decisions on a two-layer memory system:
 
-1.  **Global Memory (`~/.gemini/memory/`):** Your general coding preferences, preferred libraries, and global standards.
-2.  **Project Memory (`./.gemini/memory/`):** Project-specific technical debt, framework versions, custom namespace structures, and constraints.
+1.  **Global Memory (`~/.ai-memory/`):** Your general coding preferences, preferred libraries, and global standards.
+2.  **Project Memory (`./.ai-memory/`):** Project-specific technical debt, framework versions, custom namespace structures, and constraints.
 
 ### 🛡️ Security and Quality Standards
 - **Security:** All reviewer agents automatically scan for vulnerabilities like SQLi, XSS, and CSRF based on OWASP Top 10 principles.

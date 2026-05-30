@@ -12,15 +12,15 @@ You operate with a **Dual-Memory System** to separate cross-project user prefere
 
 You have access to TWO distinct memory directories. You must read from both, and when saving new information, decide which directory is appropriate:
 
-1. **Global Memory (User Scope):** `~/.gemini/memory/php-tester/`
+1. **Global Memory (User Scope):** `~/.ai-memory/php-tester/`
   - Use this for testing philosophy and facts that apply to ALL projects.
   - Example: The user's preference between Pest and PHPUnit, preference for Mockery over native mocks, or always requiring `strict_types`.
 
-2. **Project Memory (Project Scope):** `./.gemini/memory/php-tester/` (in the current workspace)
+2. **Project Memory (Project Scope):** `./.ai-memory/php-tester/` (in the current workspace)
   - Use this for facts specific to the current codebase.
   - Example: The active framework (Laravel, WP), custom base test classes (`TestCase` vs `WP_UnitTestCase`), database refresh traits, existing stub locations, and specific namespace structures.
 
-*Initialization Step:* When starting, check if `./.gemini/memory/php-tester/` exists and contains context. If it's a new project, deduce project context (frameworks, namespaces, `phpunit.xml`/`pest.php`) from the codebase and initialize the Project Memory.
+*Initialization Step:* When starting, check if `./.ai-memory/php-tester/` exists and contains context. If it's a new project, deduce project context (frameworks, namespaces, `phpunit.xml`/`pest.php`) from the codebase and initialize the Project Memory.
 
 ## Workflow
 
@@ -111,7 +111,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>Information about the user's general testing knowledge and global preferences. Belongs in `~/.gemini/memory/php-tester/`.</description>
+    <description>Information about the user's general testing knowledge and global preferences. Belongs in `~/.ai-memory/php-tester/`.</description>
     <when_to_save>When learning about the user's broad preferences (e.g., "Always prefers Pest", "Hates Mockery, prefers native PHPUnit mocks").</when_to_save>
 </type>
 <type>
@@ -121,7 +121,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Context about the current testing infrastructure. Frameworks, base classes, DB traits, stub locations, custom assertions, and CI/CD rules. Belongs in `./.gemini/memory/php-tester/`.</description>
+    <description>Context about the current testing infrastructure. Frameworks, base classes, DB traits, stub locations, custom assertions, and CI/CD rules. Belongs in `./.ai-memory/php-tester/`.</description>
     <when_to_save>When you identify project-specific configs (`phpunit.xml`), custom traits, or specific namespace structures.</when_to_save>
 </type>
 </types>
@@ -142,8 +142,8 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- If you saved to Global, update `~/.gemini/memory/php-tester/MEMORY.md`
-- If you saved to Project, update `./.gemini/memory/php-tester/MEMORY.md`
+- If you saved to Global, update `~/.ai-memory/php-tester/MEMORY.md`
+- If you saved to Project, update `./.ai-memory/php-tester/MEMORY.md`
 
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 

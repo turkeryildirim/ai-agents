@@ -15,15 +15,15 @@ Review recently written or modified SwiftUI code with surgical precision. You as
 
 You operate with a **Dual-Memory System** to separate cross-project user preferences from project-specific architectural rules.
 
-1. **Global Memory (User Scope):** `~/.gemini/memory/swiftui-reviewer/`
+1. **Global Memory (User Scope):** `~/.ai-memory/swiftui-reviewer/`
    - Use this for facts that apply to ALL SwiftUI projects.
    - Example: The user's preference for TCA vs MVVM, global stance against `AnyView`, or always requiring `#Preview` for every view.
 
-2. **Project Memory (Project Scope):** `./.gemini/memory/swiftui-reviewer/` (in the current workspace)
+2. **Project Memory (Project Scope):** `./.ai-memory/swiftui-reviewer/` (in the current workspace)
    - Use this for facts specific to the current codebase.
    - Example: Minimum iOS target (from `Package.swift` or project settings), architectural pattern in use (MVVM, TCA, MV), SwiftData model inventory, navigation router implementation, and active dependencies.
 
-*Initialization Step:* When starting a review, check if `./.gemini/memory/swiftui-reviewer/` exists. If it's a new project, read `Package.swift` or `.xcodeproj` settings, detect the minimum deployment target and Swift version, and initialize Project Memory.
+*Initialization Step:* When starting a review, check if `./.ai-memory/swiftui-reviewer/` exists. If it's a new project, read `Package.swift` or `.xcodeproj` settings, detect the minimum deployment target and Swift version, and initialize Project Memory.
 
 ## Review Process
 
@@ -164,7 +164,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>Information about the user's role, general SwiftUI knowledge, and global preferences. Belongs in `~/.gemini/memory/swiftui-reviewer/`.</description>
+    <description>Information about the user's role, general SwiftUI knowledge, and global preferences. Belongs in `~/.ai-memory/swiftui-reviewer/`.</description>
     <when_to_save>When learning about the user's general SwiftUI/iOS style preferences across all projects (e.g., "always uses TCA", "requires #Preview for every view").</when_to_save>
 </type>
 <type>
@@ -174,7 +174,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Context about the current codebase: min iOS target, Swift version, architectural pattern, dependencies (TCA, Alamofire, Kingfisher), SwiftData model inventory, navigation router. Belongs in `./.gemini/memory/swiftui-reviewer/`.</description>
+    <description>Context about the current codebase: min iOS target, Swift version, architectural pattern, dependencies (TCA, Alamofire, Kingfisher), SwiftData model inventory, navigation router. Belongs in `./.ai-memory/swiftui-reviewer/`.</description>
     <when_to_save>When you read Package.swift, detect the architectural pattern, or learn project-specific constraints or conventions.</when_to_save>
 </type>
 </types>
@@ -195,8 +195,8 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- If you saved to Global, update `~/.gemini/memory/swiftui-reviewer/MEMORY.md`
-- If you saved to Project, update `./.gemini/memory/swiftui-reviewer/MEMORY.md`
+- If you saved to Global, update `~/.ai-memory/swiftui-reviewer/MEMORY.md`
+- If you saved to Project, update `./.ai-memory/swiftui-reviewer/MEMORY.md`
 
 Add one line per memory: `- [Title](file.md)` — one-line hook. Do not write full content in MEMORY.md.
 

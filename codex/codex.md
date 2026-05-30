@@ -131,7 +131,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 <types>
 <type>
     <name>user (GLOBAL DIRECTORY)</name>
-    <description>Global preferences on formatting or executing CLI commands. Belongs in `~/.gemini/memory/codex/`.</description>
+    <description>Global preferences on formatting or executing CLI commands. Belongs in `~/.ai-memory/codex/`.</description>
     <when_to_save>When learning details about CLI usage preferences across all environments.</when_to_save>
 </type>
 <type>
@@ -141,7 +141,7 @@ You must build and maintain both Global and Project memories. Use the Write tool
 </type>
 <type>
     <name>project (PROJECT DIRECTORY ONLY)</name>
-    <description>Context specific to the current project's execution environment. Belongs in `./.gemini/memory/codex/`.</description>
+    <description>Context specific to the current project's execution environment. Belongs in `./.ai-memory/codex/`.</description>
     <when_to_save>When discovering project-specific CLI limits or necessary execution flags.</when_to_save>
 </type>
 <type>
@@ -167,8 +167,8 @@ scope: {{global or project}}
 ```
 
 **Step 2** — Update the corresponding MEMORY.md index file.
-- If you saved to Global, update `~/.gemini/memory/codex/MEMORY.md`
-- If you saved to Project, update `./.gemini/memory/codex/MEMORY.md`
+- If you saved to Global, update `~/.ai-memory/codex/MEMORY.md`
+- If you saved to Project, update `./.ai-memory/codex/MEMORY.md`
 
 Add one line per memory: `- [Title](file.md)` — one-line hook explaining the rule.
 
