@@ -2,22 +2,22 @@
 
 When invoking the `js-tester` agent, include the following context for best results.
 
-## 1. React Component Tests
-*Goal:* Write tests for a new React component.
-*Prompt Content:* `Write tests for the newly created [ComponentName] in [file path]. It [fetches user data / handles form submission / renders a list]. The project uses Vitest + React Testing Library. Test the happy path, loading state, error state, and user interaction.`
+## 1. New Test Suite
+*Goal:* Cover a freshly implemented module.
+*Prompt Content:* `Write Vitest tests for [module] in [file]. First list the behaviors — happy path, error paths, boundaries — then write complete runnable tests. Match the conventions in [existing test file]. State the isolation strategy per dependency and end with the run command.`
 
-## 2. Custom Hook Tests
-*Goal:* Test a new React hook.
-*Prompt Content:* `Write unit tests for the [useHookName] hook in [file path]. It manages [cart state / authentication / pagination]. Use renderHook from @testing-library/react. Cover: initial state, state updates, cleanup on unmount, and edge cases with empty data.`
+## 2. Flake Diagnosis
+*Goal:* Find why a test only fails in CI.
+*Prompt Content:* `This test passes locally and fails in CI: [test]. Output: [paste]. Diagnose the root cause — leaked timers, shared module state, ordering dependency, unhandled rejection, or real I/O — and give the fix. Do not add a retry.`
 
-## 3. Next.js API Route Tests
-*Goal:* Test a new API route handler.
-*Prompt Content:* `Write integration tests for the POST /api/orders route in [file path]. It validates input with Zod, creates a DB record, and returns 201. Use node-mocks-http or supertest. Test: valid payload success, validation failure (422), and DB error handling (500).`
+## 3. Mocking Strategy Review
+*Goal:* Replace over-mocking with real coverage.
+*Prompt Content:* `Review the mocks in [test file]. Flag module mocks that should be dependency injection, stubbed HTTP clients that should be MSW handlers, and assertions on internals. Rewrite the worst offenders around observable behavior and cite rule ids.`
 
-## 4. Utility Function Tests
-*Goal:* Test pure utility functions.
-*Prompt Content:* `Write unit tests for the utility functions in [file path]. Functions: [list function names]. Use data-driven tests (test.each / describe.each) for multiple input/output cases. Cover boundary values and type edge cases.`
+## 4. Async & Timer Tests
+*Goal:* Test time-dependent logic deterministically.
+*Prompt Content:* `Write tests for [time-dependent logic] in [file]. Use fake timers with explicit advancement, inject the clock, and cover the debounce/retry/timeout boundaries. No arbitrary sleeps. Show the cleanup in afterEach.`
 
-## 5. Vue Composable Tests
-*Goal:* Test a Vue 3 composable.
-*Prompt Content:* `Write tests for the [useComposableName] composable in [file path]. The project uses Vitest + Vue Test Utils. Test: reactive state changes, computed values, async data fetching (mock the API call), and cleanup. Mock the Pinia store using createTestingPinia.`
+## 5. Coverage Gap Audit
+*Goal:* Find what the coverage number hides.
+*Prompt Content:* `Coverage reports [n]% for [directory] but regressions still ship. Analyze branch coverage rather than line coverage, list every untested error path and boundary, and give me the tests that would actually catch regressions — ordered by risk.`

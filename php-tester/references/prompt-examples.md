@@ -2,22 +2,22 @@
 
 When invoking the `php-tester` agent, include the following context for best results.
 
-## 1. Laravel Service Unit Tests
-*Goal:* Write unit tests for a new service class.
-*Prompt Content:* `Write unit tests for [ServiceClass] in [file path]. It handles [payment processing / currency conversion / email sending]. Mock external dependencies (Stripe SDK, Mailer). Use Pest with the Expectations API. Cover: success path, validation failure, and exception handling.`
+## 1. New Test Suite
+*Goal:* Cover a freshly implemented class.
+*Prompt Content:* `Write PHPUnit tests for [class] in [file]. First list the behaviors you will cover — happy path, error paths, and boundaries — then write complete runnable tests. Match our existing conventions in [existing test file]. State the double strategy per dependency and end with the run command.`
 
-## 2. Laravel Feature Tests (HTTP)
-*Goal:* Write HTTP feature tests for a new API endpoint.
-*Prompt Content:* `Write feature tests for the POST /api/[resource] endpoint in [Controller file]. Use RefreshDatabase. Test: authenticated success (201), unauthenticated (401), validation errors (422), and forbidden access (403). Use actingAs() for auth.`
+## 2. Flake Diagnosis
+*Goal:* Find why a test is order-dependent.
+*Prompt Content:* `This test passes alone and fails in the full suite: [test]. Failure output: [paste]. Diagnose the root cause — shared static state, leftover DB rows, time/randomness leakage, or ordering dependency — and give the fix. Do not just add a retry.`
 
-## 3. WordPress Unit Tests
-*Goal:* Test a WordPress plugin class.
-*Prompt Content:* `Write unit tests for [ClassName] in [file path]. It's a WordPress plugin class that [registers hooks / processes AJAX / queries $wpdb]. Use WP_Mock to mock WordPress functions. Test: hook registration, sanitization logic, and early returns on capability checks.`
+## 3. Double Strategy Review
+*Goal:* Fix over-mocked tests.
+*Prompt Content:* `Review the test doubles in [test file]. Flag mocks of concrete classes, mocks of the system under test, and long expectation chains that should be fakes. Rewrite the worst offenders around observable behavior and cite rule ids.`
 
-## 4. PHPUnit Data Provider Tests
-*Goal:* Test multiple input variations cleanly.
-*Prompt Content:* `Write PHPUnit tests for [ClassName::methodName] in [file path]. This method [converts currencies / validates phone numbers / calculates discounts]. Use #[DataProvider] with a dataset covering: valid inputs, boundary values, zero/null edge cases, and invalid format inputs.`
+## 4. Edge Case Coverage
+*Goal:* Close the gaps around boundaries.
+*Prompt Content:* `Add coverage for [method] in [file]. Use a static data provider with named data sets covering null, empty, zero, maximum, duplicate, and [domain-specific edge cases]. Show what each case proves.`
 
-## 5. Repository / Eloquent Tests
-*Goal:* Test database query logic.
-*Prompt Content:* `Write tests for [RepositoryClass] in [file path]. It queries the [orders / users / products] table with Eloquent. Use RefreshDatabase with model factories. Test: correct records returned, scopes applied, relationships eager-loaded, and empty result handling.`
+## 5. Test Suite Audit
+*Goal:* Assess the health of an existing suite.
+*Prompt Content:* `Audit the test suite in [directory]. Check AAA structure, one-behavior-per-test, assertion specificity, conditional logic in tests, double strategy, isolation, and attribute usage. Report findings by severity with rule ids, and tell me which tests would not catch a real regression.`

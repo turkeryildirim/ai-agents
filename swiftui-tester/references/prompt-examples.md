@@ -2,32 +2,22 @@
 
 When invoking the `swiftui-tester` agent, include the following context for best results.
 
-## 1. New ViewModel — Unit Tests
+## 1. Swift Testing Suite
+*Goal:* Cover a newly built model or store.
+*Prompt Content:* `Write Swift Testing tests for [type] in [file]. Use struct suites with init-based setup, #require for preconditions and #expect for checks, and descriptive behavior names. List the behaviors first. Ensure every test is parallel-safe and state which need @MainActor.`
 
-*Goal:* Write Swift Testing unit tests for a newly written ViewModel.
-*Prompt Content:* `Write Swift Testing unit tests for the OrderListViewModel in [file path]. The ViewModel is @Observable and @MainActor. It depends on an OrderServiceProtocol. Use a mock service. Cover: successful load, loading state during fetch, service error propagation, filter logic. The project targets Xcode 16 / iOS 17.`
+## 2. SwiftData Integration
+*Goal:* Test persistence without touching the real store.
+*Prompt Content:* `Write integration tests for [SwiftData models/queries]. Use an in-memory ModelContainer seeded per test. Cover relationship delete rules, predicate correctness, sort/filter behavior, and the migration in [description].`
 
-## 2. SwiftData Model — Integration Tests
+## 3. Parallel Isolation Fix
+*Goal:* Fix tests that only fail together.
+*Prompt Content:* `These tests pass individually and fail together: [tests]. Swift Testing runs in parallel by default — find the shared state and fix it by moving setup into init. Only use .serialized if the resource is genuinely shared and external, and justify it if so.`
 
-*Goal:* Write in-memory SwiftData tests for a new @Model class.
-*Prompt Content:* `Write Swift Testing integration tests for the Order @Model in [file path]. Use an in-memory ModelContainer. Cover: insert and fetch, relationship cascade delete (order → items), #Predicate filtering by status, and that a delete rule violation throws. The project targets iOS 17.`
+## 4. Async Testing
+*Goal:* Verify async events deterministically.
+*Prompt Content:* `Write tests for the async logic in [file]. Use confirmation for event verification, inject a deterministic clock instead of waiting, apply time-limit traits, and handle actor isolation correctly. Cover cancellation and the error paths.`
 
-## 3. Async ViewModel Tests
-
-*Goal:* Test async loading and cancellation behavior.
-*Prompt Content:* `Write async Swift Testing tests for [ViewModelName] in [file path]. The ViewModel uses .task {} lifecycle. Cover: successful async load, isLoading flag during fetch, cancellation via task context, and error handling. Mark the test suite @MainActor. Use confirmation() to verify async events.`
-
-## 4. UI Test — Critical User Flow
-
-*Goal:* Add an XCTest UI test for a key user flow.
-*Prompt Content:* `Write an XCTest UI test for the checkout flow starting from [ScreenName]. The app has accessibility identifiers on all interactive elements. Use the Page Object pattern — create a CheckoutScreen helper. Cover: happy path to order confirmation, validation error when required field is empty. Use launch arguments to put the app in test mode.`
-
-## 5. Parameterized Tests
-
-*Goal:* Replace repetitive test functions with Swift Testing parameterized tests.
-*Prompt Content:* `Refactor the tests in [file path] to use parameterized @Test with arguments. The current tests repeat similar logic for multiple OrderStatus values. Consolidate into a single parameterized test covering all status transitions.`
-
-## 6. Known Issue / Flaky Test Handling
-
-*Goal:* Handle a known failing test that maps to a tracked issue.
-*Prompt Content:* `The test [testName] in [file path] is failing because of a known bug tracked in issue #[number]. Wrap the failing assertions with withKnownIssue("Tracked in #[number]") { } so the test suite passes in CI but the issue remains visible. Do not remove the test.`
+## 5. XCTest Migration
+*Goal:* Move a legacy suite incrementally.
+*Prompt Content:* `Migrate the XCTest suite in [directory] to Swift Testing. Convert XCTestCase classes to struct suites, setUp to init, XCTAssert* to #expect/#require, and expectations to confirmation. Flag anything that must stay in XCTest (UI tests, performance tests) and give me the migration order.`

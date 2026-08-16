@@ -1,33 +1,23 @@
-# Go Tester — Prompt Examples
+# Golang Tester — Prompt Examples
 
 When invoking the `golang-tester` agent, include the following context for best results.
 
-## 1. New Service — Unit Tests
+## 1. Table-Driven Suite
+*Goal:* Cover a newly implemented package.
+*Prompt Content:* `Write tests for [package/file]. List the behaviors first — happy path, every error path, and edge cases (zero values, empty slices, nil pointers, boundaries) — then write a complete table-driven suite with named cases and t.Run subtests. State the mock strategy per dependency. End with the run command.`
 
-*Goal:* Write table-driven unit tests for a newly written service.
-*Prompt Content:* `Write unit tests for the OrderService in [file path]. The service depends on an OrderRepository interface. Mock the repository at the interface boundary. Cover: happy path, repository error, validation error. The project uses testify v1.10 and Go 1.22.`
+## 2. Concurrency Test
+*Goal:* Prove a concurrent component is correct.
+*Prompt Content:* `Write tests for [concurrent component]. Cover cancellation via context, bounded concurrency, error aggregation, and graceful drain. Add goleak.VerifyTestMain. Ensure everything passes under -race and -shuffle=on, and explain which subtests can be parallel and why.`
 
-## 2. HTTP Handler Tests
+## 3. HTTP Handler Tests
+*Goal:* Test the full response contract.
+*Prompt Content:* `Write httptest-based tests for the handlers in [file]. Assert status code, headers, and body shape for success, validation failure, and unauthorized. Use httptest.NewRecorder for handlers and httptest.NewServer where the client is under test.`
 
-*Goal:* Test a new or modified HTTP handler with httptest.
-*Prompt Content:* `Write httptest-based tests for the [HandlerName] in [file path]. The handler calls [ServiceInterface]. Mock the service. Cover: 200 success, 400 bad request (invalid body), 404 not found, 500 service error. Use chi URL params if applicable.`
+## 4. Flaky Test Diagnosis
+*Goal:* Fix a race instead of hiding it.
+*Prompt Content:* `This test fails intermittently under -race: [test]. Output: [paste]. Find the shared mutable state or the ordering assumption. Do not fix it by removing t.Parallel() unless the shared state is genuinely intrinsic — explain either way.`
 
-## 3. Integration Tests with Real DB
-
-*Goal:* Write integration tests that hit a real database.
-*Prompt Content:* `Write integration tests for the UserRepository in [file path]. These tests require a real Postgres database. Tag them with //go:build integration. Use testcontainers-go to spin up a Postgres container. Cover: insert, find by ID, find returns ErrNotFound, delete cascade.`
-
-## 4. Goroutine Leak Detection
-
-*Goal:* Add goleak-guarded tests to a package that spawns goroutines.
-*Prompt Content:* `Add goleak.VerifyTestMain to the [package name] package and write tests for the WorkerPool in [file path]. The pool spawns goroutines that must be cleaned up when Stop() is called. Verify the goroutines are fully terminated using goleak.`
-
-## 5. Benchmark
-
-*Goal:* Add benchmarks for a performance-critical function.
-*Prompt Content:* `Write benchmarks for the [FunctionName] in [file path]. It processes a slice of orders and applies discount rules. Use b.ReportAllocs() and b.ResetTimer(). Add both a small (10 items) and large (10,000 items) case.`
-
-## 6. Existing Test Refactor
-
-*Goal:* Migrate non-table-driven tests to idiomatic Go table-driven style.
-*Prompt Content:* `Refactor the tests in [file path] from repeated TestX_CaseA / TestX_CaseB functions into a single table-driven TestX with t.Run subtests. Preserve all existing test cases. Add t.Parallel() to independent subtests. The project uses testify.`
+## 5. Benchmarks
+*Goal:* Measure before optimizing.
+*Prompt Content:* `Write benchmarks for [function] using b.Loop() (Go [version]) and b.ReportAllocs(). Cover [input sizes]. Guard against compiler elision, and tell me how to compare runs with benchstat.`
